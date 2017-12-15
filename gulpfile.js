@@ -11,6 +11,7 @@ var eslint = require('gulp-eslint');
 var sourcemaps = require('gulp-sourcemaps');
 var browserify = require("browserify");
 var source =  require("vinyl-source-stream");
+var reactify = require(‘reactify’);
 
 // Lint JS/JSX files
 gulp.task('eslint', function() {
@@ -49,23 +50,23 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('dest/css'));
 });
 
-var paths = {
-    main_js: ['./src/script/new.js','./src/script/demo.js','./src/script/info.js','./src/script/blog.js'],
-};
-
-gulp.task("babel", function() {
-    return browserify(paths.main_js)
-        .transform("babelify", {presets: ["es2015", "react"]})
-        .bundle()
-        .pipe(source("bundle.js"))
-        .pipe(gulp.dest("./dest/script"));
+gulp.task("browserify", function() {
+ var b = browserify({
+ entries: ["src/main.js"],
+ debug: true
+ });
+ b.transform(reactify);
+ return b.bundle()
+ .pipe(source("main.js"))
+ .pipe(gulp.dest("./dist"));
 });
 
 gulp.task('watch', function() {
     gulp.watch('./src/views/*.pug', ['views'])
     gulp.watch('./src/style/*.sass', ['sass'])
-    gulp.watch('./src/script/*.js', ['babel']);
+    gulp.watch('./src/script/*.js', ['browserify']);
+    gulp.watch('src/*.jsx', ['browserify']);
 });
 
-gulp.task('build', ['sass', 'views', 'babel']);
+gulp.task('build', ['sass', 'views', 'browserify']);
 gulp.task('default', ['build', 'watch']);

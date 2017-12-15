@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": ""
+    "start": "node app/server.js"
   },
   "author": "Sankit Acharya",
   "license": "ISC",
@@ -23,11 +23,13 @@
     "gulp-eslint": "^4.0.0",
     "gulp-install": "^1.1.0",
     "gulp-pug": "^3.3.0",
+    "gulp-react": "^3.1.0",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.1",
     "gulp-util": "^3.0.8",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "reactify": "^1.1.1",
     "requirejs": "^2.3.5",
     "vinyl-source-stream": "^1.1.0"
   },
