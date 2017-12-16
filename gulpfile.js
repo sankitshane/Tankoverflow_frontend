@@ -11,7 +11,7 @@ var eslint = require('gulp-eslint');
 var sourcemaps = require('gulp-sourcemaps');
 var browserify = require("browserify");
 var source =  require("vinyl-source-stream");
-var reactify = require(‘reactify’);
+var reactify = require("reactify");
 
 // Lint JS/JSX files
 gulp.task('eslint', function() {
@@ -27,10 +27,10 @@ gulp.task('eslint', function() {
         .pipe(eslint.failAfterError());
 });
 
-gulp.task('views', function() {
-    gulp.src('./src/views/*.pug')
+gulp.task('views', function buildHTML() {
+    gulp.src('./app/src/*.pug')
         .pipe(pug({pretty: true}).on('error', sass.logError))
-        .pipe(gulp.dest('./dest/templates'))
+        .pipe(gulp.dest('./app/dest'))
 });
 
 // Compile Sass to CSS
