@@ -1,9 +1,9 @@
 const http = require('http');
 const fs = require('fs');
 const hostname = '127.0.0.1';
-const port = 3000;
+const PORT = 3000;
 
-fs.readFile('./dest/index.html', function (err, html) {
+fs.readFile('./app/dist/view/index.html', function (err, html) {
 
     if (err) throw err;
 
@@ -12,8 +12,4 @@ fs.readFile('./dest/index.html', function (err, html) {
         response.write(html);
         response.end();
     }).listen(PORT);
-});
-
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
 });

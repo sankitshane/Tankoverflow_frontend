@@ -15,7 +15,7 @@ var reactify = require("reactify");
 
 // Lint JS/JSX files
 gulp.task('eslint', function() {
-    return gulp.src('/dest/script/*.js')
+    return gulp.src('./app/dist/*.js')
         .pipe(eslint({
             baseConfig: {
                 "ecmaFeatures": {
@@ -30,7 +30,7 @@ gulp.task('eslint', function() {
 gulp.task('views', function buildHTML() {
     gulp.src('./app/src/*.pug')
         .pipe(pug({pretty: true}).on('error', sass.logError))
-        .pipe(gulp.dest('./app/dest'))
+        .pipe(gulp.dest('./app/dist/view'))
 });
 
 // Compile Sass to CSS
@@ -42,30 +42,30 @@ gulp.task('sass', function() {
     var reloadOptions = {
         stream: true,
     };
-    return gulp.src('src/style/*.sass')
+    return gulp.src('./app/src/*.sass')
         .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'compressed'}))
         .pipe(autoprefixer(autoprefixerOptions))
         .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest('dest/css'));
+        .pipe(gulp.dest('./app/dist/style'));
 });
 
 gulp.task("browserify", function() {
  var b = browserify({
- entries: ["src/main.js"],
+ entries: ["./app/src/main.js"],
  debug: true
  });
  b.transform(reactify);
  return b.bundle()
  .pipe(source("main.js"))
- .pipe(gulp.dest("./dist"));
+ .pipe(gulp.dest("./app/dist"));
 });
 
 gulp.task('watch', function() {
-    gulp.watch('./src/views/*.pug', ['views'])
-    gulp.watch('./src/style/*.sass', ['sass'])
-    gulp.watch('./src/script/*.js', ['browserify']);
-    gulp.watch('src/*.jsx', ['browserify']);
+    gulp.watch('./app/src/*.pug', ['views'])
+    gulp.watch('./app/src/*.sass', ['sass'])
+    gulp.watch('./app/src/*.js', ['browserify']);
+    gulp.watch('./app/src/*.jsx', ['browserify']);
 });
 
 gulp.task('build', ['sass', 'views', 'browserify']);
