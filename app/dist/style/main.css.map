@@ -1,1 +1,1 @@
-{"version":3,"sources":["main.sass"],"names":[],"mappings":"AAAA,MACE,kBACA,YACA,YAAa,CAAI","file":"main.css","sourcesContent":["#root {\n  position: absolute;\n  width: 500px;\n  height: 100px; }\n"]}
+{"version":3,"sources":["main.sass"],"names":[],"mappings":"AAAA,MACE,qBACA,aACA,WAAY,CAAI","file":"main.css","sourcesContent":["#root {\n  background-color: red;\n  height: 100px;\n  width: 200px; }\n"]}
