@@ -55,7 +55,7 @@ gulp.task("browserify", function() {
  entries: ["./app/src/main.js"],
  debug: true
  });
- b.transform(reactify);
+ b.transform("babelify", {presets: ["es2015", "react"]});
  return b.bundle()
  .pipe(source("main.js"))
  .pipe(gulp.dest("./app/dist"));
