@@ -1,1 +1,1 @@
-{"version":3,"sources":["main.sass"],"names":[],"mappings":"AAAA,yBACE,6CAAgD,CAAG,oDAInD,WAAY,CAAI","file":"main.css","sourcesContent":[".demo-layout-transparent {\n  background: url('./download.jpg') center / cover; }\n\n.demo-layout-transparent .mdl-layout__header {}\n.demo-layout-transparent .mdl-layout__drawer-button {\n  color: white; }\n"]}
+{"version":3,"sources":["main.sass"],"names":[],"mappings":"AAAA,EACE,gCAAiC,CAAI","file":"main.css","sourcesContent":["* {\n  font-family: 'Roboto', sans-serif; }\n"]}
